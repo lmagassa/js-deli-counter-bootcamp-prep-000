@@ -3,15 +3,13 @@
 // Return ACTUAL position in line, not array position :-)
 
 
-function takeANumber(katzDeliLine, clientName) {
-  katzDeliLine.push(clientName)
-  var lineSize = parseInt(katzDeliLine.length) //clientName.length 
-  var queue = `Welcome, ${clientName}. You are number ${lineSize} in line.` 
+function takeANumber(katzDeliLine) {
+  var takeTicket = 0
+  
+  katzDeliLine.push() //send persons name to end of array
+  var lineSize = parseInt(katzDeliLine.length) //how many items in the index 
+  var queue = `Welcome, You are number ${} in line.` 
 return queue 
-  
-  //'Welcome, ' + clientName + '. You are number ' + katzDeliLine + ' in line.' + katzDeli.length
-  
-  //'number in line ' + katzDeliLine + 'name: ' + clientName
 }
 
 
@@ -20,9 +18,10 @@ return queue
 //it should return "There is nobody waiting to be served!"
 function nowServing(katzDeli) {
   var howManyLeft = katzDeli.length
-  if(howManyLeft == 0) {
+  // == vs. === https://codeburst.io/javascript-double-equals-vs-triple-equals-61d4ce5a121a
+  if(howManyLeft === 0) {
     //var clientName = '';
-    return  'There is nobody waiting to be served!' + katzDeli //'Currently serving ' + katzDeli.shift()
+    return  'There is nobody waiting to be served!' //+ katzDeli //
   } else {
     return 'Currently serving ' + katzDeli.shift() + '.'  
   }
@@ -37,14 +36,17 @@ function nowServing(katzDeli) {
 function currentLine(line, value, index) {
   var finallyWeArrive = []
   var howManyInLine = line.length
+  //About forEach https://thejsguy.com/2016/07/30/javascript-for-loop-vs-array-foreach.html
   var newArray = line.forEach(function(value, index) {
       return finallyWeArrive = [(' ' + (index + 1) + '. ' + value), ...finallyWeArrive]
       })
       
- if( howManyInLine == 0) {
+ if( howManyInLine === 0) {
     return 'The line is currently empty.' 
   } else {
       return 'The line is currently:' + finallyWeArrive.reverse()
+      //Resverse: https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/reverse
+  }
 }
 
 /*
@@ -60,4 +62,3 @@ function currentLine(line, value, index) {
   }
      
 */
-
